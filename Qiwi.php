@@ -21,7 +21,7 @@ class Qiwi {
 		} else {
 			curl_setopt($ch, CURLOPT_URL, $url . $method . '/?' . http_build_query($content));
 		}
-		//curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 		//curl_setopt($ch, CURLOPT_USERAGENT, getenv ('HTTP_USER_AGENT'));
 		if ($content[0]) {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json','Content-Type: application/x-www-form-urlencoded']); 
