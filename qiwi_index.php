@@ -3,7 +3,7 @@
 	mb_internal_encoding( _CONTENT_CHARSET );
 	require_once 'Qiwi.php';
 	$qiwi = new Qiwi('79996661212', 'a9760264ca3e817264ee2340aa877');
-	// 
+
 	
 	///// баланс
 	$getBalance = $qiwi->getBalance();
@@ -79,7 +79,7 @@
 	///
 */
 	
-
+/*
 	/// оплата мобильного
 	$sendMoney = $qiwi->sendMoneyToProvider($getPhoneToId["message"],[
 		'id' => $ids,
@@ -89,7 +89,7 @@
 		'fields' => ['account' => $number]
 	]);
 	///
-	
+*/	
 
 /*
 	/// оплата webmoney
