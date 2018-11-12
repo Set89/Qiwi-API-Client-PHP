@@ -79,9 +79,9 @@
 	///
 */
 	
-/*
+
 	/// оплата мобильного
-	$sendMoney = $qiwi->sendMoneyToProvider($getPhoneToId,[
+	$sendMoney = $qiwi->sendMoneyToProvider($getPhoneToId["message"],[
 		'id' => $ids,
 		'sum' => ['amount' => $summ,'currency' => '643'], 
 		'paymentMethod' => ['type' => 'Account', 'accountId' => '643'],
@@ -89,7 +89,7 @@
 		'fields' => ['account' => $number]
 	]);
 	///
-*/	
+	
 
 /*
 	/// оплата webmoney
