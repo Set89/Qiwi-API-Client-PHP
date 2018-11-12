@@ -9,13 +9,13 @@ class Qiwi {
 		$this->_token = $token;
 		$this->_url   = 'https://edge.qiwi.com/';
 	}
-	private function sendRequest($url, $method, array $content = [], $post = false) {
+	private function sendRequest($url, $method, array $content = [], $post = false, $post2 = false) {
 		$ch = curl_init();
 		if ($post) {
 			curl_setopt($ch, CURLOPT_URL, $url . $method);
 			if ($content) {
 				curl_setopt($ch, CURLOPT_POST, 1);
-				$content = $content[0] ? $content[0] : json_encode($content);
+				$content = $post2 ? $content[0] : json_encode($content);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $content);
 			}
 		} else {
@@ -23,15 +23,16 @@ class Qiwi {
 		}
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 		//curl_setopt($ch, CURLOPT_USERAGENT, getenv ('HTTP_USER_AGENT'));
-		if ($content[0]) {
-			curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json','Content-Type: application/x-www-form-urlencoded']); 
-		}else{
+		
+		if (!$post2) {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, [
 				'Accept: application/json',
 				'Content-Type: application/json',
 				'Authorization: Bearer ' . $this->_token,
 				'Host: edge.qiwi.com'
 			]); 
+		}else{
+			curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json','Content-Type: application/x-www-form-urlencoded']); 
 		}
 		
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -71,7 +72,7 @@ class Qiwi {
 		return $this->sendRequest($this->_url, 'sinap/api/v2/terms/1717/payments', $params, 1);
 	}
 	public function getPhoneToId($params) {
-		return $this->sendRequest('https://qiwi.com/mobile/', 'detect.action', $params, 1);
+		return $this->sendRequest('https://qiwi.com/mobile/', 'detect.action', $params, 1,1);
 	}
 }
 

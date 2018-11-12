@@ -64,7 +64,7 @@
 	///// оплата /////
 	$ids = time() . '000';
 	$number = '9532871881';
-	$summ = 10;
+	$summ = 1;
 	$txt = 'Тестовый платеж';
 	
 /*	
@@ -77,7 +77,7 @@
 		'fields' => ['account' => '+7'.$number]
 	]);
 	///
-*/	
+*/
 	
 /*
 	/// оплата мобильного
@@ -116,7 +116,7 @@
 
 
 	/// разбор массива ответа
-	arrayCopy( $getBalance );
+	arrayCopy( $sendMoney );
 	function arrayCopy( array $array ) {
 		echo '<ul>';
 		foreach( $array as $key => $val ) {
